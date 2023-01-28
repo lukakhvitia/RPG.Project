@@ -10,11 +10,15 @@ public class Projectile : MonoBehaviour
     
     Health target = null;
     float damage = 0;
+    private void Start()
+    {
+        transform.LookAt(GetAimLocation());
+    }
 
     void Update()
     {
         if (target == null) return;
-        transform.LookAt(GetAimLocation());
+        //transform.LookAt(GetAimLocation());
         transform.Translate(Vector3.forward * arrowSpeed * Time.deltaTime);
     }
     
