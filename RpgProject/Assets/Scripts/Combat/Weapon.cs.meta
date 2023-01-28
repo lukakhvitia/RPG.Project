@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: f9c7da51a4312fc49a825edd062a37c4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - animatorOverride: {fileID: 22100000, guid: fab844d868fcfaf4e90c28d24ae442ae, type: 2}
+  - weaponPrefab: {fileID: 6998065249495999187, guid: c2712f7f68ce4514c86268a68d940208, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
