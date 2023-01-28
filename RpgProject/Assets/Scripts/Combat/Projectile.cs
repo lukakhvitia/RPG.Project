@@ -7,7 +7,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float arrowSpeed = 5f;
-    
+    [SerializeField] bool isHoming = true;
+ 
     Health target = null;
     float damage = 0;
     private void Start()
@@ -18,7 +19,11 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         if (target == null) return;
-        //transform.LookAt(GetAimLocation());
+
+        if (isHoming)
+        {
+            transform.LookAt(GetAimLocation());
+        }
         transform.Translate(Vector3.forward * arrowSpeed * Time.deltaTime);
     }
     
