@@ -1,7 +1,9 @@
+using RPG.Core;
 using RPG.Saving;
+using RPG.Stats;
 using UnityEngine;
 
-namespace RPG.Core
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
@@ -9,6 +11,10 @@ namespace RPG.Core
 
         bool isDead = false;
 
+        private void Start()
+        {
+            health = GetComponent<BaseStats>().GetHealt();
+        }
 
         public bool IsDead()
         {
@@ -32,6 +38,11 @@ namespace RPG.Core
             isDead = true;
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        public float GetPersentage()
+        {
+            return 100 * health / GetComponent<BaseStats>().GetHealt();
         }
 
         public object CaptureState()

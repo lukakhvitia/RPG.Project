@@ -1,8 +1,9 @@
 using UnityEngine;
 using RPG.Move;
 using RPG.Core;
-using RPG.Combat;
 using RPG.Saving;
+using RPG.Attributes;
+using RPG.Combat;
 
 namespace RPG.Fighterr
 {
@@ -127,7 +128,7 @@ namespace RPG.Fighterr
         public void RestoreState(object state)
         {
             string weaponName = (string)state; 
-            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
     }
