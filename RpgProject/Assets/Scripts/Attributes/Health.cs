@@ -1,6 +1,7 @@
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
+using System;
 using UnityEngine;
 
 namespace RPG.Attributes
@@ -22,13 +23,19 @@ namespace RPG.Attributes
         }
 
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             health = Mathf.Max(health - damage, 0);
             if (health == 0)
             {
                 Die();
+                AwardExperience(instigator);
             }
+        }
+
+        public float GetPersentage()
+        {
+            return 100 * health / GetComponent<BaseStats>().GetHealt();
         }
 
         private void Die()
@@ -40,9 +47,12 @@ namespace RPG.Attributes
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
-        public float GetPersentage()
+        private void AwardExperience(GameObject instigator)
         {
-            return 100 * health / GetComponent<BaseStats>().GetHealt();
+            Experience experience = instigator.GetComponent<Experience>();
+            if (experience == null) return;
+
+            experience.GainExperience(GetComponent<BaseStats>().GetExperienceReward());
         }
 
         public object CaptureState()
